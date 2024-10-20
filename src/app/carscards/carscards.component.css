@@ -1,0 +1,100 @@
+html {
+  scroll-behavior: smooth;
+}
+#display{
+  background:transparent;
+}
+body{
+background: linear-gradient(0deg, rgba(195,171,34,1) 0%, rgba(45,81,253,1) 100%);
+margin: 0;
+}
+#display{
+  background: rgb(195,171,34);
+  background: linear-gradient(0deg, rgba(195,171,34,1) 0%, rgba(45,81,253,1) 100%);
+}
+
+.container {
+  background-color: rgb(102, 102, 182);
+      max-width: 700px;
+      border-radius: 6px;
+      position: fixed;
+      top : 50%;
+      left : 50%;
+      transform: translate(-50%, -50%); /* Center the nav */
+z-index: 20000;
+    }
+ label{
+  color: white;
+  font-weight: 400;
+ }
+  
+.card {
+max-width: calc(33.33% - 20px); /* 33.33% width for 3 cards per row with space between */
+margin: 10px; /* Space between cards */   
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.46);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(7.9px);
+  -webkit-backdrop-filter: blur(7.9px);
+  height: 510px;
+  border: 1px solid rgba(255, 255, 255, 0.37);
+  }
+  .card-header img {
+  width: 100%; /* Makes the image width responsive to the card width */
+  border-top-left-radius: 16px; /* Optional: to match card corners */
+  border-top-right-radius: 16px; /* Optional: to match card corners */
+
+  
+}
+  .content{
+      display: flex;
+     flex-wrap: wrap;
+     justify-content: space-around; 
+
+  }
+  nav {
+      display: flex;
+      align-items: center;
+      padding: 0 15px;
+      position: fixed;
+      width: 100%;
+      margin: auto;
+      z-index: 1000; /* Ensure the nav is on top */
+      height: 90px; /* Set a fixed height for the nav */
+
+}
+.parent {
+  margin-left: 2%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
+  grid-column-gap: 1000px;
+      grid-row-gap: 0px;
+  }
+  .addbtn{
+      color: rgb(169, 169, 111);   
+              cursor: pointer;
+              border: none; /* Remove border */
+              outline: none; 
+              font-size: 19px;
+              background-color: rgb(221, 221, 221);;
+              font-weight: 600; font-variant: small-caps;
+              border-radius: 10px;
+              width: 50px;
+              height: 40px;
+  }
+  
+  .div1 { grid-area: 1 / 1 / 2 / 2; }
+  .div2 { grid-area: 1 / 2 / 2 / 3; }
+
+.close-popup {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 5px 10px;
+  cursor: pointer;
+}

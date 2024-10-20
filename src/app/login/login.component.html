@@ -1,0 +1,58 @@
+<style>
+    .center-form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-image: url(assets/back.jpg);
+    }
+    form {
+        width: 480px;
+/* From https://css.glass */
+background: rgba(104, 177, 232, 0.13);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(3.5px);
+-webkit-backdrop-filter: blur(3.5px);
+border: 1px solid rgba(104, 177, 232, 0.3);        border-radius: 10px;
+        height: 350px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+   legend{
+    font-size: 28px;
+    margin-left: 12%;
+    font-weight: 700;
+    color: aliceblue;
+   }
+   button{
+    margin-left: 25%;
+   }
+   fieldset{
+    width: 80%;
+   }
+   label{
+    color: rgb(151, 184, 233);
+    font-weight: 700;
+   }
+</style>
+
+<div class="center-form">
+    <form>
+        <fieldset>
+            <legend style="margin-left: 40%;">Login           
+</legend>
+        <div class="mb-3">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" [(ngModel)]="username" [ngModelOptions]="{standalone: true}" placeholder="Enter your username">
+        </div>
+        <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control"  [(ngModel)]="password"  [ngModelOptions]="{standalone: true}" id="password" placeholder="Enter your password">
+        </div>
+        <button type="submit" class="btn btn-primary" (click)="login()" style="margin-left: 40%;">Submit</button>
+    </fieldset>
+    </form>
+</div>

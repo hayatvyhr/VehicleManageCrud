@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+<link rel="stylesheet" href="carscards.component.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+</head>
+<body>
+  
+  
+        <div class="container mt-5" *ngIf="isediting || isadding">
+             <button class="close-popup" (click)="isadding = false; isediting = false;">
+                
+        <i class="fas fa-times"></i> 
+      </button>
+        
+        <h2 align="center" style="color: rgb(253, 162, 162); font-variant: small-caps; font-size: 22px;"> Information Form</h2>
+        <form enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="carId" hidden>ID</label>
+                <input type="text" class="form-control" id="carId" placeholder="Enter ID" [(ngModel)]="idCar" [ngModelOptions]="{standalone: true}" hidden>
+            </div>
+      
+            <div class="form-group">
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="carNumber">vehicle Number</label>
+                        <input type="text" class="form-control" id="carNumber" placeholder="Enter Number" [(ngModel)]="carNumber" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="carName">vehicle Name</label>
+                        <input type="text" class="form-control" id="carName" placeholder="Enter Name" [(ngModel)]="carName" [ngModelOptions]="{standalone: true}">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="ownerName">Owner's Name</label>
+                        <input type="text" class="form-control" id="ownerName" placeholder="Enter Owner's Name" [(ngModel)]="ownerName" [ngModelOptions]="{standalone: true}" required>
+                    </div>
+                </div>
+            </div>
+            
+           
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="whatsappNumber">WhatsApp Number</label>
+                    <input type="text" class="form-control" id="whatsappNumber" placeholder="Enter WhatsApp Number" [(ngModel)]="whatsappNumber" [ngModelOptions]="{standalone: true}" required>
+                </div>  
+                <div class="col-md-4">
+                    <label for="ownerPhoneNumber">Owner's Phone Number</label>
+                    <input type="text" class="form-control" id="ownerPhoneNumber" placeholder="Enter Owner's Phone Number" [(ngModel)]="ownerPhoneNumber" [ngModelOptions]="{standalone: true}" required>
+                </div>
+                <div class="col-md-4">
+                    <label for="email">Owner's Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="Enter Owner's Email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" required>
+                </div>
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="manufacturer">Manufacturer</label>
+                    <input type="text" class="form-control" id="manufacturer" placeholder="Enter Manufacturer" [(ngModel)]="manufacturer" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col-md-4">
+                    <label for="model">Model</label>
+                    <input type="text" class="form-control" id="model" placeholder="Enter Model" [(ngModel)]="model" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col-md-4">
+                    <label for="year">Year</label>
+                    <input type="number" class="form-control" id="year" placeholder="Enter Year" [(ngModel)]="year" [ngModelOptions]="{standalone: true}">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+               
+                <div class="col-md-4">
+                    <label for="color">Color</label>
+                    <input type="text" class="form-control" id="color" placeholder="Enter Color" [(ngModel)]="color" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col-md-4">
+                    <label for="vin">VIN</label>
+                    <input type="text" class="form-control" id="vin" placeholder="Enter VIN" [(ngModel)]="vin" [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="col-md-4">
+                    <label for="price">Price</label>
+                    <input type="number" class="form-control" id="price" placeholder="Enter PRICE" [(ngModel)]="price" [ngModelOptions]="{standalone: true}" required>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="carPicture">vehicle Picture URL</label>
+                     <!-- Add this in your HTML form -->
+                   <input type="file" id="carPictureInput" (change)="onFileSelected($event)" accept="image/*"  [(ngModel)]="carPicture" [ngModelOptions]="{standalone: true}">
+                </div>
+           
+                <div class="col-md-6">
+    
+                    <label for="type">Type</label>
+                    <select class="form-control" id="type" [(ngModel)]="type" [ngModelOptions]="{standalone: true}">
+                        <option value="car">Car</option>
+                        <option value="motorbike">Motorbike</option>
+                    </select>
+           </div>
+
+            </div>
+        </div>
+        
+            <button type="submit" class="btn btn-primary" *ngIf="isediting" (click)="save()" style="margin-left: 39%; margin-bottom: 1%; background-color:  rgb(151, 151, 109); font-weight: 500;">Submit</button>
+            <button type="submit" class="btn btn-primary" *ngIf="isadding" (click)="additem()" style="margin-left: 39%; margin-bottom: 1%; background-color:  rgb(151, 151, 109); font-weight: 500;">Submit</button>
+        </form>
+    </div>
+ 
+  
+    
+    <section id="display">
+        <div class="parent">
+            <div class="div1" style="padding: 20px 2px 5px 7px;">  
+                <button type="button"(click)="adding()" class="addbtn">         <i class="fas fa-plus"></i>         </button>
+                <button type="button" (click)="logout()" class="logoutbtn" style="margin-left: 10px; padding: 5px 10px; background-color: red; color: white; border: none; cursor: pointer;">
+                    Logout
+                </button>
+            </div>
+
+            <div class="div2" style="margin-top: 16px;"> 
+                <a [routerLink]="'/cardcars' " *ngIf="showExplore"  style="direction: none; margin-top: 12px; font-size: 20px; font-weight: 700; color:rgb(0, 0, 0); font-variant: small-caps; padding: 5px;">Explore more</a>
+
+            </div> 
+        </div>
+     
+        <div class="content">
+            <div class="card mt-4" *ngFor="let item of getall.slice(0, numberOfCards)">
+                <div class="card-header text-center">
+                    <img [src]="item.pic ? item.pic : 'assets/caravatar.png'" alt="Car Picture" class="img-fluid" style="max-width: 300px;">
+
+           </div>
+        
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <h5 class="card-title">Owner Info</h5>
+                            <ul class="list-unstyled">
+                                <li><strong> Name:</strong> {{ item.ownerName }}</li>
+                                <li><strong> Phone Number:</strong> {{ item.ownerPhoneNumber }}</li>
+                                <li><strong>WhatsApp Number:</strong> {{ item.whatsappNumber }}</li>
+                                <li><strong> Email:</strong> {{ item.email }}</li>
+                                <p>{{item.carPicture}}</p>
+
+                            </ul>
+                            <div class="d-flex justify-content mt-3">
+                                <button type="submit" class="btn btn-primary" (click)="updatevehicle(item)">Edit</button>
+                                <button type="submit" class="btn btn-danger" (click)="deleteitem(item)" style="margin-left: 10px;">Delete</button>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5 class="card-title">vehicle Info</h5>
+                            <ul class="list-unstyled">
+                                <li><strong>Manufacturer:</strong> {{ item.manufacturer }}</li>
+                                <li><strong>Model:</strong> {{ item.model }}</li>
+                                <li><strong>Year:</strong> {{ item.year }}</li>
+                                <li><strong>Color:</strong> {{ item.color }}</li>
+                                <li><strong>VIN:</strong> {{ item.vin }}</li>
+                                <li><strong>Price:</strong> {{ item.price | currency }}</li>
+                                <li><strong>Type:</strong> {{ item.type }}</li>
+                                <li><strong>vehicle Number:</strong> {{ item.carNumber }}</li>
+                                <li><strong>{{ item.carName }}</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                 
+                </div>
+            </div>
+        </div>
+        
+    </section>
+</body>
+</html>
