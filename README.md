@@ -1,6 +1,6 @@
 # Cars
 ## for back Spring boot  visit vehicleManageSpring: 
-### git remote add origin https://github.com/hayatvyhr/vehicleManageSpring
+### https://github.com/hayatvyhr/vehicleManageSpring
 
 C:\Users\hayat\Documents\angular\cars>git push origin
 fatal: The current branch master has no upstream branch.
